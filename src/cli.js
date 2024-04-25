@@ -2,9 +2,9 @@
 import figlet from "figlet";
 import chalk from "chalk";
 import { program } from 'commander';
-import { createProject } from './createProject.js';
-import { handleGitOperations } from './git.js';
-import { createInteractiveElement } from './react/createInteractiveElement.js';
+import { setupProjectCommand } from './commands/project.js';
+// import { setupGitCommand } from './commands/git.js';
+// import { setupReactCommand } from './commands/react.js';
 
 console.log(
   chalk.blue(figlet.textSync("Care CLI", { horizontalLayout: "full" }))
@@ -12,27 +12,13 @@ console.log(
 
 program
   .name('care')
-  .description('Our own cli for managing projects en all we need to code faster!')
+  .description('Our own CLI for managing projects and all we need to code faster!')
   .version('1.0.0');
 
-program.command('project')
-  .description('Create a new project')
-  .action(() => {
-    createProject();
-  });
-
-// program.command('git')
-//   .description('Git operations')
-//   .action(() => {
-//     handleGitOperations();
-//   });
-
-// program.command('react')
-//   .description('Create a new component or page in react')
-//   .action(() => {
-//     createInteractiveElement();
-//   });
-
-
+// Setup commands
+setupProjectCommand(program);
+// Uncomment the following lines if you want to enable these features
+// setupGitCommand(program);
+// setupReactCommand(program);
 
 program.parse(process.argv);
