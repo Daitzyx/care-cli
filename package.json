@@ -1,6 +1,6 @@
 {
   "name": "cli-care",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Our own cli",
   "main": "src/cli.js",
   "scripts": {
