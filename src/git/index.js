@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
-import { handleGitCommit, handleGitPush, handleGitMerge, handleGitPull } from './gitCommands.js';
+import { handleGitCommit, handleGitPush, handleGitMerge, handleGitPull, handleCheckSync } from './gitCommands.js';
 
 export async function handleGitOperations() {
   const answers = await inquirer.prompt([
@@ -8,7 +8,7 @@ export async function handleGitOperations() {
       type: 'list',
       name: 'operation',
       message: 'Select the Git operation:',
-      choices: ['commit', 'commit & push', 'push', 'pull', 'merge']
+      choices: ['commit', 'commit & push', 'push', 'pull', 'merge', 'synchronize']
     }
   ]);
 
@@ -27,6 +27,9 @@ export async function handleGitOperations() {
       break;
     case 'merge':
       await handleGitMerge();
+      break;
+    case 'synchronize':
+      await handleCheckSync();
       break;
   }
 }

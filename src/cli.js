@@ -3,7 +3,8 @@ import figlet from "figlet";
 import chalk from "chalk";
 import { program } from 'commander';
 import { setupProjectCommand } from './commands/project.js';
-// import { setupGitCommand } from './commands/git.js';
+import { setupGitCommand } from './commands/git.js';
+import { setupTasksCommand } from './commands/monday.js';
 // import { setupReactCommand } from './commands/react.js';
 
 console.log(
@@ -18,7 +19,8 @@ program
 // Setup commands
 setupProjectCommand(program);
 // Uncomment the following lines if you want to enable these features
-// setupGitCommand(program);
+setupGitCommand(program);
+setupTasksCommand(program);
 // setupReactCommand(program);
 
 program.parse(process.argv);
